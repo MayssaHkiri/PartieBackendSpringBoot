@@ -24,7 +24,7 @@ public class Utilisateur {
 	private String email;
 	private Long  telephone ; 
 	private String mdp ; 
-	@JsonIgnore
+	
 	@OneToMany (mappedBy="user")
 	 private List<Role> roles ;
 	public Long getId() {
