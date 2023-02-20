@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
 @Table(name="UTILISATEUR") 
 public class Utilisateur {
@@ -22,6 +24,7 @@ public class Utilisateur {
 	private String email;
 	private Long  telephone ; 
 	private String mdp ; 
+	@JsonIgnore
 	@OneToMany (mappedBy="user")
 	 private List<Role> roles ;
 	public Long getId() {

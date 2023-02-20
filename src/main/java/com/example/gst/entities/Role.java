@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
 public class Role {
 @Id 
@@ -15,6 +17,8 @@ public class Role {
 @GeneratedValue(strategy = GenerationType.AUTO )
 private Long id ; 
 private String role ; 
+
+@JsonIgnore
 @ManyToOne
 @JoinColumn(name="ID_USER", referencedColumnName="ID_USER")
 private Utilisateur user ;
