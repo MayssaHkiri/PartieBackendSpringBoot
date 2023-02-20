@@ -24,24 +24,24 @@ public class UtilisateurController {
 	
 	@Autowired 
 	private UtilisateurService userService ; 
-	@PostMapping()
+	@PostMapping("/Ajouter")
 	public Utilisateur AjouterUtilisateur (@RequestBody Utilisateur user ) {
 		return userService.AjouterUtilisateur(user);
 	}
-	@GetMapping()
+	@GetMapping("/Consulter")
 	public  List<Utilisateur> ListerUtilisateurs (){
 		return userService.ConsulterUtilisateurs(); 
 	}
-	@GetMapping ("/{id}")
+	@GetMapping ("Rechercher/{id}")
 	public Utilisateur ConsulterUtilisateur ( @PathVariable Long id) {
 		return userService.ConsulterUtilById(id);
 	}
-	@PutMapping ("/{id}")
+	@PutMapping ("Modifier/{id}")
 	public Utilisateur ModifierUtilisateur (@RequestBody Utilisateur user )
 	{
 		return userService.ModifierUtilisateur(user);
 	}
-	@DeleteMapping ("/{id}")
+	@DeleteMapping ("Supprimer/{id}")
 	public void SupprimerUtilisateur (@PathVariable Long id )
 	{
 		userService.SupprimeUtilById(id); 
