@@ -8,16 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity 
-@Data 
-@NoArgsConstructor 
-@AllArgsConstructor 
-@Builder
 public class Role {
 @Id 
 @Column(name="ID_ROLE")
@@ -44,6 +35,15 @@ public Utilisateur getUser() {
 	return user;
 }
 public void setUser(Utilisateur user) {
+	this.user = user;
+}
+public Role() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+public Role(String role, Utilisateur user) {
+	super();
+	this.role = role;
 	this.user = user;
 }
 
