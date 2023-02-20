@@ -10,14 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-@Data
-@NoArgsConstructor 
-@AllArgsConstructor
-@Builder
 @Entity 
 @Table(name="UTILISATEUR") 
 public class Utilisateur {
@@ -72,6 +64,19 @@ public class Utilisateur {
 		return roles;
 	}
 	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Utilisateur(String nom, String prenom, String email, Long telephone, String mdp, List<Role> roles) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.mdp = mdp;
 		this.roles = roles;
 	}
 	
