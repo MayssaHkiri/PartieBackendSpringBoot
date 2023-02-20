@@ -24,7 +24,7 @@ public class UtilisateurController {
 	
 	@Autowired 
 	private UtilisateurService userService ; 
-	@PostMapping()
+	@PostMapping("/ajouter")
 	public Utilisateur AjouterUtilisateur (@RequestBody Utilisateur user ) {
 		return userService.AjouterUtilisateur(user);
 	}
