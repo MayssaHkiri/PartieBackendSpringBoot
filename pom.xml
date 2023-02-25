@@ -50,6 +50,11 @@
            <version>9.0.71</version>
         </dependency>
 
+        <dependency>
+        	<groupId>com.example</groupId>
+        	<artifactId>Backend-1</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 	<build>
