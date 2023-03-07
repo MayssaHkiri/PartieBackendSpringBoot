@@ -47,4 +47,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return utilRepo.save(U);
 	}
 
+	@Override
+	public List<Utilisateur> ListedesAdhérents() {
+		
+		return utilRepo.ListedesAdhérents();
+	}
+
 }

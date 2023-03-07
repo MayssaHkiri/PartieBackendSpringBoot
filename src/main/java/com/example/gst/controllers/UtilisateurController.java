@@ -46,5 +46,9 @@ public class UtilisateurController {
 	{
 		userService.SupprimeUtilById(id); 
 	}
+	  @GetMapping("/ListeDesAdhérents")
+	     List<Utilisateur> retrieveAll(){
+	        return userService.ListedesAdhérents();
+	   }
 	
 }
