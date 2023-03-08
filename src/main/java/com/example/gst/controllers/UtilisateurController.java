@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.gst.entities.Utilisateur;
 import com.example.gst.services.UtilisateurService;
 
-@RequestMapping ("/adherents")
+@RequestMapping ("/utilisateurs")
 @CrossOrigin("*")
 @RestController
 public class UtilisateurController {
@@ -46,9 +46,9 @@ public class UtilisateurController {
 	{
 		userService.SupprimeUtilById(id); 
 	}
-	  @GetMapping("/ListeDesAdhérents")
-	     List<Utilisateur> retrieveAll(){
-	        return userService.ListedesAdhérents();
+	  @GetMapping("/ListeDesUtilisateurs/{role}")
+	     List<Utilisateur> ListeParRole( @PathVariable String role){
+	        return userService.ListeParRole(role);
 	   }
 	
 }

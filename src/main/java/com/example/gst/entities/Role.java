@@ -1,5 +1,7 @@
 package com.example.gst.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,11 +20,11 @@ public class Role {
 @GeneratedValue(strategy = GenerationType.AUTO )
 private Long id ; 
 private String role ; 
-
 @JsonIgnore
-@ManyToOne
-@JoinColumn(name="ID_USER", referencedColumnName="ID_USER")
-private Utilisateur user ;
+@OneToMany (mappedBy="role")
+private List<Utilisateur> utilisateurs ;
+
+
 
 public Long getId() {
 	return id;
@@ -35,20 +38,22 @@ public String getRole() {
 public void setRole(String role) {
 	this.role = role;
 }
-public Utilisateur getUser() {
-	return user;
-}
-public void setUser(Utilisateur user) {
-	this.user = user;
-}
+
 public Role() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public Role(String role, Utilisateur user) {
+public List<Utilisateur> getUtilisateurs() {
+	return utilisateurs;
+}
+public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+	this.utilisateurs = utilisateurs;
+}
+public Role(Long id, String role, List<Utilisateur> utilisateurs) {
 	super();
+	this.id = id;
 	this.role = role;
-	this.user = user;
+	this.utilisateurs = utilisateurs;
 }
 
 }

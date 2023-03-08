@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,8 +27,10 @@ public class Utilisateur {
 	private Long  telephone ; 
 	private String mdp ; 
 	
-	@OneToMany (mappedBy="user")
-	 private List<Role> roles ;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_ROLE", referencedColumnName="ID_Role")
+	private Role role ;
 	public Long getId() {
 		return id;
 	}
@@ -63,24 +67,27 @@ public class Utilisateur {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
-	public List<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+	
 	public Utilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Utilisateur(String nom, String prenom, String email, Long telephone, String mdp, List<Role> roles) {
+	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public Utilisateur(Long id, String nom, String prenom, String email, Long telephone, String mdp, Role role) {
 		super();
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
 		this.mdp = mdp;
-		this.roles = roles;
+		this.role = role;
 	}
 	
 	

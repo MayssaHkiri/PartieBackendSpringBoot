@@ -48,9 +48,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public List<Utilisateur> ListedesAdhérents() {
+	public List<Utilisateur> ListeParRole(String RoleNom) {
 		
-		return utilRepo.ListedesAdhérents();
+		return utilRepo.ListByRole(RoleNom);
 	}
+
+	
 
 }
