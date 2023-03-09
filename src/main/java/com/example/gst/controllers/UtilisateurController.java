@@ -50,5 +50,9 @@ public class UtilisateurController {
 	     List<Utilisateur> ListeParRole( @PathVariable String role){
 	        return userService.ListeParRole(role);
 	   }
+	  @GetMapping("/RechercherUtilisateur/{role}/{critere}")
+	     List<Utilisateur> ChercherUtilisateur( @PathVariable String role ,@PathVariable String critere ){
+	        return userService.RechercherUtilisateur(role ,critere );
+	   }
 	
 }

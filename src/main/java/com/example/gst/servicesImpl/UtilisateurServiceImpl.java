@@ -53,6 +53,12 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return utilRepo.ListByRole(RoleNom);
 	}
 
+	@Override
+	public List<Utilisateur> RechercherUtilisateur(String RoleNom ,String recherche  ) {
+		
+		return utilRepo.RechercherUtilisateur(RoleNom ,recherche);
+	}
+
 	
 
 }

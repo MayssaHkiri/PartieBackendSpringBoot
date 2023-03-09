@@ -13,4 +13,5 @@ public interface UtilisateurService {
 	public void SupprimeUtilById (Long id); 
 	public Utilisateur ModifierUtilisateur ( Utilisateur U  ); 
 	public List<Utilisateur>ListeParRole (String RoleNom);
+	public List<Utilisateur>RechercherUtilisateur (String RoleNom ,String recherche);
 }

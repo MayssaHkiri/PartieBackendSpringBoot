@@ -14,5 +14,10 @@ public interface UtilisateurRepository extends JpaRepository <Utilisateur , Long
 	
 	@Query(value = "SELECT * FROM utilisateur u INNER JOIN role r ON u.ID_ROLE = r.ID_ROLE WHERE r.role = :roleNom",nativeQuery = true)
     public List<Utilisateur> ListByRole(@Param(value = "roleNom") String role);
+	
+	@Query(value = "SELECT * FROM utilisateur u INNER JOIN role r ON u.ID_ROLE = r.ID_ROLE WHERE r.role = :roleNom and (u.nom LIKE %:recherche% OR u.prenom LIKE %:recherche% OR u.email LIKE %:recherche% ) ",nativeQuery = true)
+
+
+	public List<Utilisateur> RechercherUtilisateur(@Param(value = "roleNom") String role ,@Param(value = "recherche") String critere);
 
 }
