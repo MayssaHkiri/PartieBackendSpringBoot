@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,14 +24,21 @@ public class Utilisateur {
     private Long id ; 
 	private String nom;
 	private String prenom;
+	@Column(unique = true)
 	private String email;
-	private Long  telephone ; 
+	private String telephone;
+	private String adresse;
 	private String mdp ; 
 	
 	
 	@ManyToOne
-	@JoinColumn(name="ID_ROLE", referencedColumnName="ID_Role")
+	@JoinColumn(name="ID_ROLE", referencedColumnName="ID_ROLE")
+	@ForeignKey(name = "FK_USER_ROLE", foreignKeyDefinition = "FOREIGN KEY (ID_ROLE) REFERENCES role(ID_Role)")
 	private Role role ;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Discipline", referencedColumnName="Id_Discipline")
+	private Discipline discipline;
 	public Long getId() {
 		return id;
 	}
@@ -55,12 +63,7 @@ public class Utilisateur {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Long getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(Long telephone) {
-		this.telephone = telephone;
-	}
+	
 	public String getMdp() {
 		return mdp;
 	}
@@ -68,10 +71,6 @@ public class Utilisateur {
 		this.mdp = mdp;
 	}
 	
-	public Utilisateur() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
 	public Role getRole() {
 		return role;
@@ -79,16 +78,40 @@ public class Utilisateur {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public Utilisateur(Long id, String nom, String prenom, String email, Long telephone, String mdp, Role role) {
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public String getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	public Discipline getDiscipline() {
+		return discipline;
+	}
+	public void setDiscipline(Discipline discipline) {
+		this.discipline = discipline;
+	}
+	public Utilisateur(Long id, String nom, String prenom, String email, String telephone, String adresse, String mdp,
+			Role role, Discipline discipline) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
+		this.adresse = adresse;
 		this.mdp = mdp;
 		this.role = role;
+		this.discipline = discipline;
 	}
-	
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
 @Table(name="Discipline") 
 public class Discipline {
@@ -19,9 +21,27 @@ public class Discipline {
 	@GeneratedValue(strategy = GenerationType.AUTO )
     private Long id ; 
 	private String discipline;
+	
 	@OneToMany (mappedBy="discipline")
 	 private List<Entraîneur> entraineurs ;
 	
+	@JsonIgnore
+	@OneToMany (mappedBy="discipline")
+	private List<Utilisateur> utilisateurs ;
+	
+	public Discipline(Long id, String discipline, List<Entraîneur> entraineurs, List<Utilisateur> utilisateurs) {
+		super();
+		this.id = id;
+		this.discipline = discipline;
+		this.entraineurs = entraineurs;
+		this.utilisateurs = utilisateurs;
+	}
+	public List<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -41,16 +61,11 @@ public class Discipline {
 	public void setEntraineurs(List<Entraîneur> entraineurs) {
 		this.entraineurs = entraineurs;
 	}
-	public Discipline(Long id, String discipline, List<Entraîneur> entraineurs) {
-		super();
-		this.id = id;
-		this.discipline = discipline;
-		this.entraineurs = entraineurs;
-	}
 	public Discipline() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 	
