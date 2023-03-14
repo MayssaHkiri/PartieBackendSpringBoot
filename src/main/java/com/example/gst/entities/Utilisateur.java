@@ -24,7 +24,6 @@ public class Utilisateur {
     private Long id ; 
 	private String nom;
 	private String prenom;
-	@Column(unique = true)
 	private String email;
 	private String telephone;
 	private String adresse;
